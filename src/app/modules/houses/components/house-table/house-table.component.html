@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" sortable="house_number" (sort)="onSort($event)">
+        House Number
+      </th>
+      <th scope="col" sortable="block_number" (sort)="onSort($event)">
+        Block No
+      </th>
+      <th scope="col" sortable="land_number" (sort)="onSort($event)">
+        Land No
+      </th>
+      <th scope="col" sortable="price" (sort)="onSort($event)">Price</th>
+      <th scope="col" sortable="status" (sort)="onSort($event)">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of itemsList; track item.house_number) {
+    <tr>
+      <td>{{ item.house_number }}</td>
+      <td>{{ item.block_number }}</td>
+      <td>{{ item.land_number }}</td>
+      <td>{{ item.price }}</td>
+      <td>{{ item.status }}</td>
+      <td class="edit" (click)="editHouse.emit(item)">Edit</td>
+    </tr>
+    }
+  </tbody>
+</table>

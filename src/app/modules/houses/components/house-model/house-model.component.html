@@ -1,0 +1,57 @@
+<div class="filter">
+  <div class="filter-properties" [formGroup]="filterForm">
+    <app-dropdown
+      [title]="'Block number'"
+      [items]="blockNumbers"
+      [value]="filterForm.value.blockNumber"
+      (changeItem)="
+        changeFilter.emit({ value: $event, nameControl: 'blockNumber' })
+      "
+    ></app-dropdown>
+
+    <app-dropdown
+      [title]="'Land number'"
+      [items]="landNumbers"
+      [value]="filterForm.value.landNumber"
+      (changeItem)="
+        changeFilter.emit({ value: $event, nameControl: 'landNumber' })
+      "
+    ></app-dropdown>
+
+    <app-dropdown
+      [title]="'Min Price'"
+      [items]="prices"
+      [value]="filterForm.value.minPrice"
+      (changeItem)="
+        changeFilter.emit({ value: $event, nameControl: 'minPrice' })
+      "
+    ></app-dropdown>
+
+    <app-dropdown
+      [title]="'Max Price'"
+      [items]="prices"
+      [value]="filterForm.value.maxPrice"
+      (changeItem)="
+        changeFilter.emit({ value: $event, nameControl: 'maxPrice' })
+      "
+    ></app-dropdown>
+  </div>
+  <button class="btn btn-outline-secondary" *ngIf="isCreate">
+    Create new house
+  </button>
+</div>
+
+<div class="houses-list">
+  <app-accordion
+    [accordions]="accordions"
+    [customTemplate]="housesTemp"
+  ></app-accordion>
+  <ng-template #housesTemp let-data="data">
+    <app-house-list
+      [housesModel]="data"
+      [houseList]="houseList"
+      [filter]="filterForm"
+      (editHouse)="editHouse.emit($event)"
+    ></app-house-list>
+  </ng-template>
+</div>

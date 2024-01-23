@@ -1,0 +1,21 @@
+:host {
+  .houses-list,
+  .filter {
+    padding: 1.5rem 7rem;
+  }
+
+  .filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:nth-child(1) {
+      align-items: baseline;
+    }
+
+    .filter-properties {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}

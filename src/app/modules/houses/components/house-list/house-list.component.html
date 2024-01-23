@@ -1,0 +1,16 @@
+<div class="info-house-model">
+  <div class="media">
+    <h2>{{ housesModel.content.media.title }}</h2>
+    <p>{{ housesModel.content.media.description }}</p>
+  </div>
+
+  <img
+    [src]="housesModel.content.media.banner"
+    [alt]="housesModel.content.media.title"
+  />
+</div>
+
+<app-house-table
+  [data]="houseDataFilter"
+  (editHouse)="editHouse.emit($event)"
+></app-house-table>

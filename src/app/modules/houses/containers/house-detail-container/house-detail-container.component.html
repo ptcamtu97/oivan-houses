@@ -1,0 +1,10 @@
+<app-house-detail
+  [data]="(houseData$ | async)!"
+  [form]="form"
+  [status]="status"
+  [houseTypes]="houseTypes"
+  [houseModels]="(housesFace.houseModels$ | async) || []"
+  (changeValue)="changeValue($event)"
+  (createHouse)="createHouse($event)"
+  (updateHouse)="updateHouse($event)"
+></app-house-detail>

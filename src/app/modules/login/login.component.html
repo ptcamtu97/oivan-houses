@@ -1,0 +1,29 @@
+<div class="custom-spinner" *ngIf="loginFace.isLoading$ | async">
+  <mat-spinner color="accent"></mat-spinner>
+</div>
+
+<div
+  class="control-login"
+  *ngIf="loginFace.loginResult$ | async; else loginTemp"
+>
+  <span class="logout" (click)="logout()">Logout</span>
+</div>
+
+<ng-template #loginTemp>
+  <div class="control-login" [formGroup]="loginForm">
+    <input
+      class="form-control"
+      placeholder="User Name"
+      formControlName="userName"
+    />
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <span class="action-login" (click)="login()"
+      >Login <span class="mdi custom-mdi mdi-chevron-right"></span
+    ></span>
+  </div>
+</ng-template>

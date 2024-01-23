@@ -1,0 +1,18 @@
+:host {
+  .dropdown-custom {
+    width: 100%;
+    p {
+      margin-bottom: 0;
+    }
+
+    .selected {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}

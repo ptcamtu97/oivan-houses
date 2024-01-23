@@ -1,0 +1,15 @@
+<div class="custom-spinner" *ngIf="housesFace.isLoading$ | async">
+  <mat-spinner color="accent"></mat-spinner>
+</div>
+
+<app-house-model
+  [filterForm]="filterForm"
+  [blockNumbers]="(housesFace.blockNumber$ | async) || []"
+  [landNumbers]="(housesFace.landNumbers$ | async) || []"
+  [prices]="(housesFace.prices$ | async) || []"
+  [accordions]="(housesFace.houseModelList$ | async) || []"
+  [houseList]="(housesFace.houseList$ | async) || []"
+  [isCreate]="!!(loginFace.loginResult$ | async)"
+  (changeFilter)="changeFilter($event)"
+  (editHouse)="editHouse($event)"
+></app-house-model>

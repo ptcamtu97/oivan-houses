@@ -1,0 +1,9 @@
+@import "../../../../../palette";
+
+:host {
+  .edit {
+    color: map-get($blue-palette, 600);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

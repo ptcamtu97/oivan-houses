@@ -1,0 +1,54 @@
+<div class="header">
+  <p>{{ houseDetail.house_number }}</p>
+  <button
+    class="btn btn-outline-secondary"
+    (click)="
+      houseDetail ? updateHouse.emit(form.value) : createHouse.emit(form.value)
+    "
+  >
+    {{ houseDetail ? "Update" : "Create" }}
+  </button>
+</div>
+
+<div class="container-house" [formGroup]="form">
+  <div class="custom-input">
+    <p>House number</p>
+    <input class="form-control" type="text" formControlName="houseNumber" />
+  </div>
+
+  <div class="custom-input">
+    <p>Block number</p>
+    <input class="form-control" type="text" formControlName="blockNumber" />
+  </div>
+  <div class="custom-input">
+    <p>Land number</p>
+    <input class="form-control" type="text" formControlName="landNumber" />
+  </div>
+
+  <app-dropdown
+    [title]="'House type'"
+    [items]="houseTypes"
+    [value]="form.value.houseType"
+    (changeItem)="changeValue.emit({ value: $event, nameControl: 'houseType' })"
+  ></app-dropdown>
+
+  <app-dropdown
+    [title]="'House model'"
+    [items]="houseModels"
+    [value]="form.value.houseModel"
+    (changeItem)="
+      changeValue.emit({ value: $event, nameControl: 'houseModel' })
+    "
+  ></app-dropdown>
+
+  <div class="custom-input">
+    <p>Price</p>
+    <input class="form-control" type="text" formControlName="price" />
+  </div>
+  <app-dropdown
+    [title]="'Status'"
+    [items]="status"
+    [value]="form.value.status"
+    (changeItem)="changeValue.emit({ value: $event, nameControl: 'status' })"
+  ></app-dropdown>
+</div>
