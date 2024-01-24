@@ -31,6 +31,15 @@ export class HousesFace {
     })
   );
 
+  houseNumbers$ = this.store.select(HousesSelector.houseList).pipe(
+    map((houses) => {
+      const houseNumbers = houses.map((item) => item.house_number);
+      return houseNumbers
+        ?.filter((value, index) => houseNumbers.indexOf(value) === index)
+        .sort();
+    })
+  );
+
   prices$ = this.store.select(HousesSelector.houseList).pipe(
     map((houses) => {
       const prices = houses

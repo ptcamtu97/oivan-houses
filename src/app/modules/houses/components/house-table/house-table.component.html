@@ -12,19 +12,17 @@
       </th>
       <th scope="col" sortable="price" (sort)="onSort($event)">Price</th>
       <th scope="col" sortable="status" (sort)="onSort($event)">Status</th>
-      <th scope="col">Action</th>
+      <th scope="col" *ngIf="isLogin">Action</th>
     </tr>
   </thead>
   <tbody>
-    @for (item of itemsList; track item.house_number) {
-    <tr>
+    <tr *ngFor="let item of itemsList">
       <td>{{ item.house_number }}</td>
       <td>{{ item.block_number }}</td>
       <td>{{ item.land_number }}</td>
       <td>{{ item.price }}</td>
       <td>{{ item.status }}</td>
-      <td class="edit" (click)="editHouse.emit(item)">Edit</td>
+      <td class="edit" (click)="editHouse.emit(item)" *ngIf="isLogin">Edit</td>
     </tr>
-    }
   </tbody>
 </table>

@@ -12,5 +12,6 @@
 
 <app-house-table
   [data]="houseDataFilter"
+  [isLogin]="isLogin"
   (editHouse)="editHouse.emit($event)"
 ></app-house-table>

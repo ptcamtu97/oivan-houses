@@ -25,6 +25,7 @@ export class HouseTableComponent {
     this.itemsOrigin = value;
     this.itemsList = value;
   }
+  @Input() isLogin: boolean;
 
   @Output() editHouse = new EventEmitter<HouseListInfo>();
 

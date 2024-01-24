@@ -43,6 +43,7 @@ export interface HouseListInfo {
   status: string;
   id: string;
   type: string;
+  house_model?: string;
 }
 
 export interface ResponseHouseList {

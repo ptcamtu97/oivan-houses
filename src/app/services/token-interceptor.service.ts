@@ -20,7 +20,8 @@ export class TokenInterceptorService implements HttpInterceptor {
     if (token) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${token}`,
+          authentication: `${token}`,
+          'Content-Type': 'application/vnd.api+json',
         },
       });
     }

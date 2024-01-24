@@ -5,7 +5,13 @@ import {
   inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  ValidatorFn,
+} from '@angular/forms';
 import { HouseDetailComponent } from '../../components';
 import { HousesFace } from '../../../../store/fades';
 import { ActivatedRoute } from '@angular/router';
@@ -25,7 +31,7 @@ export class HouseDetailContainerComponent implements OnInit {
   activatedRoute = inject(ActivatedRoute);
 
   form = new FormGroup({
-    houseNumber: new FormControl(),
+    houseNumber: new FormControl('', this.inHouseListValidator()),
     blockNumber: new FormControl(),
     landNumber: new FormControl(),
     houseType: new FormControl(),
@@ -41,14 +47,21 @@ export class HouseDetailContainerComponent implements OnInit {
   houseTypes = ['Townhouse', 'Villa'];
 
   houseData$: Observable<HouseListInfo>;
+  houseNumbers: string[];
 
   ngOnInit(): void {
     this.housesFace.getHouseModelList();
     this.housesFace.getHouseList();
 
+    this.housesFace.houseNumbers$
+      .pipe(filter((value) => !!value))
+      .subscribe((value) => (this.houseNumbers = value));
+
     this.activatedRoute.params
-      .pipe(filter((params) => !!params))
+      .pipe(filter((params) => !!params['id']))
       .subscribe((params) => {
+        this.form?.controls.houseNumber.setValidators(null);
+        this.form?.controls.houseNumber.updateValueAndValidity();
         this.houseData$ = this.housesFace.getHouseById(params['id']);
       });
   }
@@ -60,10 +73,26 @@ export class HouseDetailContainerComponent implements OnInit {
   }
 
   createHouse() {
-    this.housesFace.createHouse(this.form.value as any);
+    if (this.form.valid) {
+      this.housesFace.createHouse(this.form.value as any);
+    }
   }
 
   updateHouse() {
     this.housesFace.updateHouse(this.form.value as any);
+  }
+
+  inHouseListValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const { value } = control;
+      if (
+        !this.houseNumbers ||
+        !this.houseNumbers?.find((item) => item === value)
+      ) {
+        return null; // Valid
+      } else {
+        return { invalidHouseNumber: true }; // Invalid
+      }
+    };
   }
 }

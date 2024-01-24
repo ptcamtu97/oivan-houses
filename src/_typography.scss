@@ -5,3 +5,7 @@
 @mixin font-title() {
   font-size: 1.8rem;
 }
+
+@mixin font-tiny() {
+  font-size: 0.7rem;
+}

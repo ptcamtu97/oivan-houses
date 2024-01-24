@@ -26,12 +26,12 @@ export class HousesService {
   ): Observable<any> {
     return this.http.post<any>(`${ENDPOINT}/houses`, {
       data: {
-        type: payload.type,
+        type: 'houses',
         attributes: {
           house_number: payload.houseNumber,
           block_number: payload.blockNumber,
           land_number: payload.landNumber,
-          model: payload.model,
+          model: payload.houseModel,
           house_type: payload.houseType,
           price: payload.price,
         },

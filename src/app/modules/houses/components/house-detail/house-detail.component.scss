@@ -1,5 +1,5 @@
 @import "../../../../../typography";
-
+@import "../../../../../mixin";
 :host {
   > * {
     padding: 1.5rem 7rem;
@@ -27,6 +27,16 @@
         margin-bottom: 0;
       }
     }
+
+    @include respond(tab-port) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond(phone) {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
   }
 
   // Hide number input spinner
@@ -37,5 +47,10 @@
   }
   input[type="number"] {
     -moz-appearance: textfield;
+  }
+
+  .error {
+    color: red;
+    @include font-tiny;
   }
 }

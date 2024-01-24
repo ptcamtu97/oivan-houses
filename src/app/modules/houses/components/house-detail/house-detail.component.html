@@ -2,7 +2,7 @@
   <p>{{ houseDetail.house_number || "Create house" }}</p>
   <button
     class="btn btn-outline-secondary"
-    (click)="houseDetail ? updateHouse.emit() : createHouse.emit()"
+    (click)="houseDetail.id ? updateHouse.emit() : createHouse.emit()"
   >
     {{ houseDetail.id ? "Update" : "Create" }}
   </button>
@@ -12,6 +12,11 @@
   <div class="custom-input">
     <p>House number</p>
     <input class="form-control" type="text" formControlName="houseNumber" />
+    <span
+      class="error"
+      *ngIf="form.get('houseNumber')?.hasError('invalidHouseNumber')"
+      >Your house number is already used</span
+    >
   </div>
 
   <div class="custom-input">
