@@ -54,4 +54,8 @@ export class HouseModelContainerComponent implements OnInit {
   editHouse(house: HouseListInfo): void {
     this.router.navigateByUrl(`/houses/${house.id}`);
   }
+
+  createHouse(): void {
+    this.router.navigateByUrl(`/houses/create-house`);
+  }
 }

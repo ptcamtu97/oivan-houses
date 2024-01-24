@@ -1,0 +1,33 @@
+:host {
+  .breadcrumb {
+    background: none;
+    font-size: 0.8rem;
+    padding: 0 7rem;
+
+    a,
+    span {
+      color: darkgrey;
+    }
+    a:hover,
+    span:hover {
+      color: dimgrey;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    li {
+      list-style: none;
+      float: left;
+      margin: 0.5rem 0.2rem;
+    }
+    li:last-child {
+      margin-right: 2rem;
+    }
+    li::after {
+      content: ">";
+      color: darkgrey;
+    }
+    li:last-child::after {
+      content: "";
+    }
+  }
+}

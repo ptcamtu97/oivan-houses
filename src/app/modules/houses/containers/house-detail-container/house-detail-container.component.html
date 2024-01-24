@@ -5,6 +5,6 @@
   [houseTypes]="houseTypes"
   [houseModels]="(housesFace.houseModels$ | async) || []"
   (changeValue)="changeValue($event)"
-  (createHouse)="createHouse($event)"
-  (updateHouse)="updateHouse($event)"
+  (createHouse)="createHouse()"
+  (updateHouse)="updateHouse()"
 ></app-house-detail>

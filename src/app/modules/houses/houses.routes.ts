@@ -4,6 +4,7 @@ import {
   HouseDetailContainerComponent,
   HouseModelContainerComponent,
 } from './containers';
+import { AuthGuardService } from '../../services';
 
 export const HOUSES_ROUTES: Routes = [
   {
@@ -16,8 +17,20 @@ export const HOUSES_ROUTES: Routes = [
         component: HouseModelContainerComponent,
       },
       {
+        path: 'create-house',
+        component: HouseDetailContainerComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          breadcrumb: 'Create house',
+        },
+      },
+      {
         path: ':id',
         component: HouseDetailContainerComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          breadcrumb: '',
+        },
       },
     ],
   },

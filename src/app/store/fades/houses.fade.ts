@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { HousesAction } from '../actions';
 import { HousesSelector } from '../selectors';
 import { Observable, map } from 'rxjs';
-import { HeaderTable, HouseListInfo } from '../../shared/interfaces';
+import { HouseListInfo, KeysToCamelCase } from '../../shared/interfaces';
 
 @Injectable()
 export class HousesFace {
@@ -67,10 +67,10 @@ export class HousesFace {
   }
 
   createHouse(payload: any): void {
-    this.store.dispatch(HousesAction.createHouse(payload));
+    this.store.dispatch(HousesAction.createHouse({ payload }));
   }
 
-  updateHouse(payload: any): void {
-    this.store.dispatch(HousesAction.updateHouse(payload));
+  updateHouse(payload: KeysToCamelCase<HouseListInfo>): void {
+    this.store.dispatch(HousesAction.updateHouse({ payload }));
   }
 }

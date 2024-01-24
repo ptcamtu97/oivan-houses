@@ -9,6 +9,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { reducers } from './store/reducers';
 import { HousesFace, LoginFace } from './store/fades';
 import {
+  AuthGuardService,
   HousesService,
   LoginService,
   TokenInterceptorService,
@@ -18,7 +19,13 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HousesEffect, LoginEffect } from './store/effects';
 
-const SERVICES = [LoginService, HousesService, LoginFace, HousesFace];
+const SERVICES = [
+  LoginService,
+  HousesService,
+  AuthGuardService,
+  LoginFace,
+  HousesFace,
+];
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),

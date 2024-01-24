@@ -36,7 +36,11 @@
       "
     ></app-dropdown>
   </div>
-  <button class="btn btn-outline-secondary" *ngIf="isCreate">
+  <button
+    class="btn btn-outline-secondary"
+    *ngIf="isCreate"
+    (click)="createHouse.emit()"
+  >
     Create new house
   </button>
 </div>

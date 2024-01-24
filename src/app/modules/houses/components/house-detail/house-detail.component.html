@@ -1,12 +1,10 @@
 <div class="header">
-  <p>{{ houseDetail.house_number }}</p>
+  <p>{{ houseDetail.house_number || "Create house" }}</p>
   <button
     class="btn btn-outline-secondary"
-    (click)="
-      houseDetail ? updateHouse.emit(form.value) : createHouse.emit(form.value)
-    "
+    (click)="houseDetail ? updateHouse.emit() : createHouse.emit()"
   >
-    {{ houseDetail ? "Update" : "Create" }}
+    {{ houseDetail.id ? "Update" : "Create" }}
   </button>
 </div>
 
@@ -43,7 +41,7 @@
 
   <div class="custom-input">
     <p>Price</p>
-    <input class="form-control" type="text" formControlName="price" />
+    <input class="form-control" type="number" formControlName="price" />
   </div>
   <app-dropdown
     [title]="'Status'"

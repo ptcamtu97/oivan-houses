@@ -23,6 +23,8 @@ export class HouseDetailComponent {
         houseModel: value.model,
         price: value.price,
         status: value.status,
+        id: value.id,
+        type: value.type,
       });
     }
   }
@@ -36,8 +38,8 @@ export class HouseDetailComponent {
     value: string;
     nameControl: string;
   }>();
-  @Output() updateHouse = new EventEmitter<HouseListInfo>();
-  @Output() createHouse = new EventEmitter<HouseListInfo>();
+  @Output() updateHouse = new EventEmitter<void>();
+  @Output() createHouse = new EventEmitter<void>();
 
   houseDetail: HouseListInfo = {} as HouseListInfo;
 }

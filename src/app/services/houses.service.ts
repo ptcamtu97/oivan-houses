@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ENDPOINT } from '../shared/constants';
 import {
   HouseListInfo,
+  KeysToCamelCase,
   ResponseHouseList,
   ResponseHouseModel,
 } from '../shared/interfaces';
@@ -20,34 +21,38 @@ export class HousesService {
     return this.http.get<ResponseHouseList>(`${ENDPOINT}/houses`);
   }
 
-  createHouse(payload: HouseListInfo): Observable<any> {
+  createHouse(
+    payload: KeysToCamelCase<HouseListInfo> = {} as any
+  ): Observable<any> {
     return this.http.post<any>(`${ENDPOINT}/houses`, {
       data: {
         type: payload.type,
         attributes: {
-          house_number: 'Test-house',
-          block_number: 'A',
-          land_number: 'B',
-          model: 'apartment-1',
-          house_type: 'apartment',
-          price: 1000,
+          house_number: payload.houseNumber,
+          block_number: payload.blockNumber,
+          land_number: payload.landNumber,
+          model: payload.model,
+          house_type: payload.houseType,
+          price: payload.price,
         },
       },
     });
   }
 
-  updateHouse(payload: HouseListInfo): Observable<any> {
-    return this.http.patch<any>(`${ENDPOINT}/houses/${'3'}`, {
+  updateHouse(
+    payload: KeysToCamelCase<HouseListInfo> = {} as any
+  ): Observable<any> {
+    return this.http.patch<any>(`${ENDPOINT}/houses/${payload.id}`, {
       data: {
-        type: 'houses',
-        id: '3',
+        type: payload.type,
+        id: payload.id,
         attributes: {
-          house_number: 'Test-house',
-          block_number: '002',
-          land_number: 'riverside',
-          model: 'apartment-1',
-          house_type: 'apartment',
-          price: 1000,
+          house_number: payload.houseNumber,
+          block_number: payload.blockNumber,
+          land_number: payload.landNumber,
+          model: payload.model,
+          house_type: payload.houseType,
+          price: payload.price,
         },
       },
     });

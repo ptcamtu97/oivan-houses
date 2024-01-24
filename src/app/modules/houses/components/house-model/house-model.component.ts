@@ -39,4 +39,5 @@ export class HouseModelComponent {
     nameControl: string;
   }>();
   @Output() editHouse = new EventEmitter<HouseListInfo>();
+  @Output() createHouse = new EventEmitter<void>();
 }

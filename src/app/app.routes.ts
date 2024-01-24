@@ -10,5 +10,8 @@ export const routes: Routes = [
     path: 'houses',
     loadChildren: () =>
       import('./modules/houses/houses.routes').then((m) => m.HOUSES_ROUTES),
+    data: {
+      breadcrumb: 'House list',
+    },
   },
 ];

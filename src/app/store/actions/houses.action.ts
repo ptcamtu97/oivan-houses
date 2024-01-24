@@ -1,5 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { AccordionItem, HouseListInfo } from '../../shared/interfaces';
+import {
+  AccordionItem,
+  HouseListInfo,
+  KeysToCamelCase,
+} from '../../shared/interfaces';
 
 export const getHouseModelList = createAction('[Houses] Get House Model List');
 
@@ -32,7 +36,7 @@ export const createHouseFail = createAction('[Houses] Create House Fail');
 
 export const updateHouse = createAction(
   '[Houses] Update House',
-  props<{ payload: any }>()
+  props<{ payload: KeysToCamelCase<HouseListInfo> }>()
 );
 
 export const updateHouseSuccess = createAction('[Houses] Update House Success');

@@ -32,6 +32,8 @@ export class HouseDetailContainerComponent implements OnInit {
     houseModel: new FormControl(),
     price: new FormControl(),
     status: new FormControl(),
+    type: new FormControl(),
+    id: new FormControl(),
   });
 
   status = ['Available', 'Booked'];
@@ -57,11 +59,11 @@ export class HouseDetailContainerComponent implements OnInit {
     });
   }
 
-  createHouse(event: HouseListInfo) {
-    this.housesFace.createHouse(event);
+  createHouse() {
+    this.housesFace.createHouse(this.form.value as any);
   }
 
-  updateHouse(event: HouseListInfo) {
-    this.housesFace.updateHouse(event);
+  updateHouse() {
+    this.housesFace.updateHouse(this.form.value as any);
   }
 }

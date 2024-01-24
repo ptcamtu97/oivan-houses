@@ -1,9 +1,18 @@
 @import "../../../../../palette";
 
 :host {
+  height: 20rem;
+  overflow: auto;
+  display: block;
   .edit {
     color: map-get($blue-palette, 600);
     cursor: pointer;
     text-decoration: underline;
+  }
+
+  .header-table {
+    position: sticky;
+    top: 0;
+    cursor: pointer;
   }
 }

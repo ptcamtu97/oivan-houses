@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LoginFace } from '../../store/fades';
 import { LoginService } from '../../services';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 export class LoginComponent {
   loginFace = inject(LoginFace);
   loginServiceService = inject(LoginService);
+
+  #router = inject(Router);
 
   loginForm = new FormGroup({
     userName: new FormControl(),
@@ -35,5 +38,6 @@ export class LoginComponent {
   logout(): void {
     this.loginForm.reset();
     this.loginFace.logout();
+    this.#router.navigate(['/']);
   }
 }
