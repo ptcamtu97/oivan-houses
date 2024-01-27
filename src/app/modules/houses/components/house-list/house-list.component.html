@@ -4,10 +4,9 @@
     <p>{{ housesModel.content.media.description }}</p>
   </div>
 
-  <img
-    [src]="housesModel.content.media.banner"
-    [alt]="housesModel.content.media.title"
-  />
+  <video controls>
+    <source [src]="housesModel.content.video" type="video/mp4" />
+  </video>
 </div>
 
 <app-house-table
