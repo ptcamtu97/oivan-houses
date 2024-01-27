@@ -71,10 +71,7 @@ export class HouseListComponent implements OnInit, OnChanges {
       changes['housesModel'].previousValue !==
         changes['housesModel']?.currentValue &&
       changes['houseList'] &&
-      changes['houseList'].previousValue !==
-        changes['houseList']?.currentValue &&
-      changes['filter'] &&
-      changes['filter'].previousValue !== changes['filter']?.currentValue
+      changes['houseList'].previousValue !== changes['houseList']?.currentValue
     ) {
       this.houseData = this.houseList?.filter(
         (house) => house.model === this.housesModel?.content?.model
