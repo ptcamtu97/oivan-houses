@@ -80,6 +80,7 @@ export class HouseListComponent implements OnInit, OnChanges {
         (house) => house.model === this.housesModel?.content?.model
       );
       this.houseDataFilter = this.houseData;
+      this.cdr.detectChanges();
     }
   }
 }
