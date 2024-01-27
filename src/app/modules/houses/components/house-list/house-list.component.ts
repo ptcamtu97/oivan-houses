@@ -37,7 +37,7 @@ export class HouseListComponent implements OnInit, OnChanges {
   cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
-    // this.houseDataFilter = this.houseData;
+    this.getHouseDataFilter();
     this.filter.valueChanges.subscribe((value) => {
       this.houseDataFilter = this.houseData?.filter((house) => {
         const { blockNumber, landNumber, minPrice, maxPrice } = value;
@@ -73,11 +73,15 @@ export class HouseListComponent implements OnInit, OnChanges {
       changes['houseList'] &&
       changes['houseList'].previousValue !== changes['houseList']?.currentValue
     ) {
-      this.houseData = this.houseList?.filter(
-        (house) => house.model === this.housesModel?.content?.model
-      );
-      this.houseDataFilter = this.houseData;
+      this.getHouseDataFilter();
       this.cdr.detectChanges();
     }
+  }
+
+  getHouseDataFilter(): void {
+    this.houseData = this.houseList?.filter(
+      (house) => house.model === this.housesModel?.content?.model
+    );
+    this.houseDataFilter = this.houseData;
   }
 }
